@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deteksi Produk Pro Palestina</title>
+  <style>
+    :root {
+      --hijau-palestina: #2e7d32;
+      --hijau-tua: #256b28;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Palestinian_Watermelon_Pattern.svg/800px-Palestinian_Watermelon_Pattern.svg.png') repeat;
+      background-size: 80px;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: var(--hijau-palestina);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    .top-icons {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .top-icons a {
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .search-box {
+      text-align: center;
+      padding: 25px;
+    }
+
+    .search-box input {
+      padding: 12px;
+      width: 60%;
+      max-width: 400px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .search-box button {
+      padding: 12px 20px;
+      background-color: var(--hijau-palestina);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: background 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: var(--hijau-tua);
+    }
+
+    .produk-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      gap: 15px;
+    }
+
+    .produk-item {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 15px;
+      border-radius: 16px;
+      width: 220px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .produk-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .produk-item h4 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 13px;
+      margin-top: 6px;
+      color: white;
+    }
+
+    .pro-palestina { background-color: #4CAF50; }
+    .pro-israel { background-color: #f44336; }
+    .netral { background-color: #ff9800; }
+
+    .tentang, .donasi {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 24px;
+      margin: 25px auto;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 850px;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 30px;
+      border-top: 2px solid #eee;
+    }
+
+    @media (max-width: 768px) {
+      .produk-item { width: 45%; }
+      .search-box input { width: 60%; }
+    }
+
+    @media (max-width: 480px) {
+      .produk-item { width: 90%; }
+      .search-box input { width: 55%; }
+      .top-icons { top: 10px; right: 10px; font-size: 18px; }
+      header h1 { font-size: 20px; }
+      .search-box input, .search-box button { font-size: 14px; }
+    }
+
+    .left-icon {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.left-icon a {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- Ikon kiri atas -->
+  <div class="left-icon">
+    <a href="portofolio.html" title="Portofolio">📁</a>
+  </div>
+
+  <h1>🌿 Deteksi Produk Pro Palestina</h1>
+  <p>Dukung perjuangan Palestina dengan bijak memilih produk.</p>
+
+  <!-- Ikon kanan atas -->
+  <div class="top-icons">
+  <a href="scanner.html" title="Scan Produk">📷</a>
+  <a href="edukasi.html" title="Edukasi Palestina">📚</a>
+  <a href="donasi.html" title="Donasi">💰</a>
+  <a href="admin.html" title="Admin">⋮</a>
+</div>
+
+</header>
+
+<section class="search-box">
+  <input type="text" id="searchInput" placeholder="Cari nama produk...">
+  <button onclick="cariProduk()">Cari</button>
+</section>
+
+<section class="produk-list" id="produkList"></section>
+
+<section class="tentang" id="tentangSection" style="display:none;">
+  <h2>📚 Tentang Palestina</h2>
+  <p>Palestina adalah tanah yang diberkahi dan sangat penting dalam sejarah Islam.</p>
+  <p><strong>📖 Dalam Al-Qur'an:</strong></p>
+  <p><em>“Mahasuci Allah yang telah memperjalankan hamba-Nya pada suatu malam dari Masjidil Haram ke Masjidil Aqsa yang Kami berkahi sekelilingnya...” (QS. Al-Isra:1)</em></p>
+  <p><strong>📜 Dalam Hadis:</strong></p>
+  <p><em>“Janganlah kalian melakukan perjalanan kecuali ke tiga masjid: Masjidil Haram, Masjidku ini (Nabawi), dan Masjid Al-Aqsa.” (HR. Bukhari dan Muslim)</em></p>
+</section>
+
+<section class="donasi" id="donasiSection" style="display: none;">
+  <h2>💰 Donasi untuk Palestina</h2>
+  <p>Dukung rakyat Palestina dengan berdonasi melalui lembaga terpercaya berikut:</p>
+  <ul>
+    <li><a href="https://kitabisa.com/campaign/palestina" target="_blank">🔗 Kitabisa - Donasi Palestina</a></li>
+    <li><a href="https://act.id" target="_blank">🔗 Aksi Cepat Tanggap (ACT)</a></li>
+    <li><a href="https://lazismu.org" target="_blank">🔗 Lazismu</a></li>
+    <li><a href="https://rumahzakat.org" target="_blank">🔗 Rumah Zakat</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p>© 2025 PeduluPalestine | Smavent Peduli</p>
+</footer>
+
+<script>
+  const dataProduk = [
+    { "nama": "Aqua", "status": "Netral" },
+    { "nama": "Coca Cola", "status": "Pro Israel" },
+    { "nama": "Wardah", "status": "Pro Palestina" },
+    { "nama": "Nestle", "status": "Pro Israel" },
+    { "nama": "Pepsi", "status": "Pro Israel" },
+    { "nama": "Sari Roti", "status": "Netral" },
+    { "nama": "Teh Botol Sosro", "status": "Netral" },
+    { "nama": "Indomie", "status": "Pro Palestina" },
+    { "nama": "Samsung", "status": "Pro Palestina" },
+    { "nama": "Apple", "status": "Pro Israel" },
+    { "nama": "McDonald's", "status": "Pro Israel" },
+    { "nama": "Burger King", "status": "Pro Israel" },
+    { "nama": "Garuda Food", "status": "Pro Palestina" },
+    { "nama": "Unilever", "status": "Pro Israel" },
+    { "nama": "Loreal", "status": "Pro Israel" },
+    { "nama": "The Body Shop", "status": "Pro Palestina" },
+    { "nama": "Maybelline", "status": "Pro Israel" },
+    { "nama": "Pixy", "status": "Netral" },
+    { "nama": "Evercoss", "status": "Pro Palestina" },
+    { "nama": "Miyako", "status": "Netral" }
+  ];
+
+  function tampilkanProduk(list) {
+    const container = document.getElementById("produkList");
+    container.innerHTML = "";
+    list.forEach(p => {
+      const item = document.createElement("div");
+      item.className = "produk-item";
+      item.innerHTML = `
+        <h4>${p.nama}</h4>
+        <span class="status ${p.status.toLowerCase().replace(' ', '-')}">${p.status}</span>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  function cariProduk() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const hasil = dataProduk.filter(p => p.nama.toLowerCase().includes(keyword));
+    tampilkanProduk(hasil);
+  }
+
+  tampilkanProduk(dataProduk);
+</script>
+
+</body>
+</html>
